@@ -1,0 +1,31 @@
+{block content}
+<ol class="orderProcess">
+	<li><span>1. </span>Košík</li>
+	<li><span>2. </span>Dodání a platba</li>
+	<li class="current"><span>3. </span>Souhrn</li>
+</ol>
+<br>
+
+<h2>Vaše objednávka byla dokončena.</h2>
+
+Kopie potvrzení Vaší objednávky Vám byla také odeslána na e-mail.<br>
+<br>
+{if $payment == "prevod"}
+	Jako způsob platby jste zvolili bankovní převod. Pro platbu prosím použijte následující údaje:<br>
+	Číslo účtu příjemce: <strong>2500041043/2010</strong> (Fio banka a.s.)<br>
+	Variabilní symbol: <strong>{$number}</strong><br>
+	Částka k úhradě: <strong>{$total|price}&nbsp;Kč</strong><br><br>
+	Ihned po obdržení platby na náš účet bude Vaše objednávka expedována.<br><br>
+	Platební údaje lze použít nejen pro platbu bankovním převodem, ale také pro platbu složenkou typu A. Adresa majitele účtu: Jiří Tiller, Rosická 40, Říčany u Brna, 664 82.<br>
+{elseif $payment == "slovensko"}
+	Jako způsob platby jste zvolili bankovní převod. Pro platbu prosím použijte následující údaje:<br>
+	Číslo účtu příjemce: <strong>2500041043/8330</strong> (Fio banka a.s., Slovensko)<br>
+	Variabilní symbol: <strong>{$number}</strong><br>
+	Částka k úhradě: <strong>{($total/25)|price}&nbsp;€</strong><br><br>
+	Ihned po obdržení platby na náš účet bude Vaše objednávka expedována.
+{else}
+	Jako způsob platby jste zvolili dobírku. Objednávka bude zaslána na Vámi zadanou zadanou adresu.
+{/if}
+<br>
+<h2>Děkujeme za Váš nákup.</h2>
+{/block}

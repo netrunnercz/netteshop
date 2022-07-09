@@ -1,0 +1,25 @@
+{var $robots = noindex}
+
+{block content}
+<div class="login">
+	{form signInForm}
+		<table>
+			<tr>
+				<td rowspan="5"><img src="/images/key.png" /></td>
+				<td class="label center">Uživatel:</td>
+			</tr>
+			<tr>
+				<td>{input username}</td>
+			</tr>
+			<tr>
+				<td class="label center">Heslo:</td>
+			</tr>
+			<tr>
+				<td>{input password}</td>
+			</tr>
+			<tr>
+				<td class="center">{input send}</td>
+			</tr>
+		</table>
+	{/form}
+</div>

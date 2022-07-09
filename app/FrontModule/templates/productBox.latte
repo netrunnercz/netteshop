@@ -1,0 +1,14 @@
+{foreach $products as $product}
+	<div class="category-productBox{if (BCMod($iterator->getCounter() - 2, 3) == 0)} middle{/if}">
+		<a n:href="Product:default $product->id">
+			{$product->name}
+			<div class="category-productBoxImage">
+				<img src="{if $product->mainImage}/i/medium/{$product->id}-{$product->mainImage}.jpg{else}/i/noimage-medium.jpg{/if}" />
+			</div>
+			</a>
+		<div class="category-productBoxPrice">
+			{$product->price_czk|price}&nbsp;Kč&nbsp;
+			{control cart, $product->id}
+		</div>
+	</div>
+{/foreach}

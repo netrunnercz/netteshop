@@ -1,0 +1,11 @@
+{*<form method="post" action="{plink Order:add}">
+	<input type="hidden" name="id" value="{$id}" />
+	<input type="text" name="quantity" value="1" class="quantity" /> ks
+	<input type="submit" value="Koupit" class="toCart" />
+</form>*}
+
+{form add-$id}
+	{input id}
+	{input quantity, class => quantity}
+	{input send, class => toCartButton, value => ""}
+{/form}

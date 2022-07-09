@@ -1,0 +1,16 @@
+{block content}
+<h2>Výsledky vyhledávání {$q}</h2>
+
+{if count($products)}
+
+	{control paginator}
+
+	{include '../productBox.latte'}
+
+	{control paginator}
+
+{else}
+	Litujeme, ale daný dotaz jsme nenašli žádné zboží.
+{/if}
+
+{/block}

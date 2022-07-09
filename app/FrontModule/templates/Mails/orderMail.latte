@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Potvrzení objednávky</title>
+		<style>
+			body {
+				background-color: #FFFFFF;
+				padding: 0;
+				font-family: Arial;
+				font-size: 13px;
+			}
+			table {
+				font-size: 13px;
+				border-collapse: collapse;
+			}
+			tr.hlavicka {
+				font-weight: bold;
+				background-color: #ffd8a7;
+			}
+			td {
+				border: 1px solid #000000;
+				padding: 4px;
+			}
+			.nadpis {
+				font-size: 15px;
+				font-weight: bold;
+				padding-bottom: 10px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h1 class="nadpis">Potvrzení objednávky</h1>
+		<p>Dobrý den,<br>
+děkujeme za Vaši objednávku v internetovém obchodu časopisu Koně &amp; hříbata.<br><br>
+Níže najdete informace o Vaší objednávce.<br><br>
+S pozdravem<br>
+časopis Koně &amp; hříbata</p>
+		
+		<hr>
+		{if $payment == "prevod"}
+			Jako způsob platby jste zvolili bankovní převod. Pro platbu prosím použijte následující údaje:<br>
+			Číslo účtu příjemce: <b>2500041043/2010</b> (Fio banka, a.s.)<br>
+			Variabilní symbol: <b>{$number}</b><br>
+			Částka k úhradě: <b>{$total|price}&nbsp;Kč</b><br><br>
+			Ihned po obdržení platby na náš účet bude Vaše objednávka expedována.<br><br>
+			Platební údaje lze použít nejen pro platbu bankovním převodem, ale také pro platbu složenkou typu A. Adresa majitele účtu: Jiří Tiller, Rosická 40, Říčany u Brna, 664 82.<br>
+		{elseif $payment == "slovensko"}
+			Jako způsob platby jste zvolili bankovní převod. Pro platbu prosím použijte následující údaje:<br>
+			Číslo účtu příjemce: <strong>2500041043/8330</strong> (Fio banka a.s., Slovensko)<br>
+			Variabilní symbol: <strong>{$number}</strong><br>
+			Částka k úhradě: <strong>{($total/25)|price}&nbsp;€</strong><br><br>
+			Ihned po obdržení platby na náš účet bude Vaše objednávka expedována.
+		{else}
+			Jako způsob platby jste zvolili dobírku. Objednávka bude zaslána na zadanou adresu.
+		{/if}
+		<hr>
+		
+		<b>Informace o Vaší objednávce:</b><br>
+		<table>
+			<tr class="hlavicka">
+				<td>Název&nbsp;zboží</td>
+				<td>Počet&nbsp;kusů</td>
+				<td>Cena&nbsp;s&nbsp;DPH</td>
+			</tr>
+			{foreach $items as $item}
+			<tr>
+				<td><b>{$item->name}</b></td>
+				<td align="center">{$item->quantity}</td>
+				<td align="right">{$item->price_czk*$item->quantity|price}&nbsp;Kč</td>
+			</tr>
+			{/foreach}
+			<tr>
+				<td><b>Poštovné</b></td>
+				<td align="center">1</td>
+				<td align="right">{$postage|price}&nbsp;Kč</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right"><b>Celkem:</b></td><td align="right">{$total|price}&nbsp;Kč</td>
+			</tr>
+		</table>
+		<a href="http://shop.koneahribata.cz">shop.koneahribata.cz</a>
+	</body>
+
+</html>

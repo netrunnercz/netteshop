@@ -1,0 +1,21 @@
+{var $currDepth = 0}
+{while (!empty($tree))}
+	{var $currNode = array_shift($tree)}
+	{if $currNode['depth'] == 0 || strpos($currNode['path'], $current) !== false}
+		{if $currNode['depth'] > $currDepth}
+			<ul class="submenu">
+		{/if}
+		{if ($currNode['depth'] < $currDepth)}
+			{for $i = 1; $i <= $currDepth - $currNode['depth']; $i++}
+			</ul>
+			{/for}
+		{/if}
+		<li class="category"><a href="{plink Category: id => $currNode['path']}">{$currNode['name']}</a></li>
+		{var $currDepth = $currNode['depth']}
+		{if (empty($tree)) }
+			{for $i = 1; $i <= $currDepth + 1; $i++}
+				</ul>
+			{/for}
+		{/if}
+	{/if}
+{/while}

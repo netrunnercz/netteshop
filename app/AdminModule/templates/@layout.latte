@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>{ifset $title}{$title} &ndash; {/ifset}Koně &amp; hříbata</title>
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/adminmain.css" />
+	<script src="{$basePath}/js/netteForms.js"></script>
+	</head>
+	<body>
+	
+		<div id="header">
+			<span>E-shop Koně &amp; hříbata | Administrace</span>
+			
+			<div class="logout"><a n:href="Sign:out">Odhlásit</a></div>
+		</div>
+		
+		<div id="menu">
+			<ul>
+				<li><a n:href="Order:">Objednávky</a></li>
+				<li><a n:href="Product:">Zboží</a></li>
+				<li><a n:href="Category:">Kategorie</a></li>
+				<li><a n:href="Article:">Články</a></li>
+			</ul>
+		</div>
+		
+		<div id="contentContainer">
+			<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+			
+			
+				<h1>{ifset #h1}{include #h1}{/ifset}</h1>
+				
+				{ifset #toolbar}{include #toolbar}{/ifset}
+			
+				{include #content}
+			</div>
+		
+	
+	</body>
+</html>

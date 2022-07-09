@@ -1,0 +1,71 @@
+{block h1}Detail objednávky {$order->id}{/block}
+
+{block content}
+<div class="box floatleft w50">
+	<div class="boxTitle">Zákazník</div>
+	<div class="boxContent">
+		{if $order->sms_address}
+				{$order->sms_address}
+		{else}
+			{$order->customer_firstname} {$order->customer_lastname}<br>
+			{$order->customer_street}<br>
+			{$order->customer_zip} {$order->customer_city}
+		{/if}
+		<br><br>
+
+		{$order->customer_phone|phone}<br>
+		{$order->customer_email}
+	</div>
+</div>
+
+<div class="box floatright w50">
+	<div class="boxTitle">Informace</div>
+	<div class="boxContent">
+		Datum objednání: {$order->ordered|date:'j. n. Y'}<br>
+		Zaplaceno: {if $order->paid}{$order->paid|date:'j. n. Y'}{else}ne{/if}<br>
+		Způsob platby: {$order->payment}<br>
+		state: {$order->status}<br>
+	</div>
+</div>
+
+<div class="box floatright w50">
+	<div class="boxTitle">Odeslat upozornění</div>
+	<div class="boxContent">
+		<a href="{link sendNotification! $order->id}">Odeslat</a>
+	</div>
+</div>
+
+<table class="grid clear">
+	<thead>
+		<tr>
+			<td></td>
+			<td>Zboží</td>
+			<td class="center">Kusů</td>
+			<td class="right">Cena/ks</td>
+			<td class="right">Cena</td>
+		</tr>
+	</thead>
+	<tbody>
+		{foreach $items as $item}
+		<tr>
+			<td width="1" class="center"><img src="/i/small/{$item->pid}-{$item->mainImage}.jpg" alt="{$item->name}" title="{$item->name}" class="micro" /></td>
+			<td><a n:href="Product:edit product_id => $item->pid">{$item->name}</a></td>
+			<td class="center">{$item->quantity}</td>
+			<td class="right">{$item->price_czk|price}&nbsp;Kč</td>
+			<td class="right">{$item->price_czk*$item->quantity|price}&nbsp;Kč</td>
+		</tr>
+		{/foreach}
+		<tr>
+			<td colspan="4" class="right">Celkem za zboží</td>
+			<td class="right highlight">{$order->total - $order->postage |price}&nbsp;Kč</td>
+		</tr>
+		<tr>
+			<td colspan="4" class="right">Poštovné</td>
+			<td class="right highlight">{$order->postage|price}&nbsp;Kč</td>
+		</tr>
+		<tr>
+			<td colspan="4" class="right strong highlight">Celkem</td>
+			<td class="right strong highlight">{$order->total|price}&nbsp;Kč</td>
+		</tr>
+	</tbody>
+</table>

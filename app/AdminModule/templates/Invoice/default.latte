@@ -1,0 +1,66 @@
+{block content}
+
+{foreach $orders as $order}
+
+<table style="border-collapse: collapse; width: 100%; margin: 0 auto 10px auto;">
+	<tr style="font-size: 140%; text-align: right; font-weight: bold">
+		<td colspan="2">Stvrzenka &ndash; daňový doklad č. {$order["id"]}</td>
+	</tr>
+	<tr>
+		<td style="border: 1px solid #000; width: 50%">
+			<b>Dodavatel:</b><br>
+			Časopis Koně &amp; hříbata<br>
+			Jiří Tiller<br>
+			Roscká 40<br>
+			664 82 Říčany u Brna<br>
+			IČ: 75791811, DIČ:CZ8506266142
+		</td>
+		<td style="border: 1px solid #000;">
+			<b>Odběratel:</b><br>
+			{if $order["sms_address"]}
+				{$order["sms_address"]}
+			{else}
+				{$order["customer_firstname"]} {$order["customer_lastname"]}<br>
+				{$order["customer_street"]}<br>
+				{$order["customer_zip"]} {$order["customer_city"]}<br>
+			{/if}
+		</td>
+	</tr>
+	<tr style="border: 1px solid #000;">
+		<td colspan="2">Datum zdanitelného plnění: {$order["ordered"]->format("j. n. Y")}</td>
+	</tr>
+</table>
+
+<table style="border-collapse: collapse; width: 100%; border: 1px solid #000;">
+	<tr style="font-weight: bold; border: 1px solid #000;">
+		<td style="width: 40%;">Název zboží</td>
+		<td style="width: 20%; text-align: right;">Cena ks</td>
+		<td style="width: 10%; text-align: center;">ks</td>
+		<td style="width: 10%; text-align: center;">DPH %</td>
+		<td style="width: 20%; text-align: right;">Cena s DPH</td>
+	</tr>
+	{foreach $order["items"] as $item}
+	<tr>
+		<td>{$item["name"]}</td>
+		<td style="text-align: right;">{$item["price_czk"]|number:2:",":" "}&nbsp;Kč</td>
+		<td style="text-align: center;">{$item["quantity"]}</td>
+		<td style="text-align: center;">{$item["vat_rate"]}</td>
+		<td style="text-align: right;">{$item["price_czk"]*$item["quantity"]|number:2:",":" "}&nbsp;Kč</td>
+	</tr>
+	{/foreach}
+	<tr>
+		<td>Poštovné</td>
+		<td style="text-align: right;">{$order["postage"]|number:2:",":" "}&nbsp;Kč</td>
+		<td style="text-align: center;">1</td>
+		<td style="text-align: center;">{$order["postage_vat_rate"]}</td>
+		<td style="text-align: right;">{$order["postage"]|number:2:",":" "}&nbsp;Kč</td>
+	</tr>
+	<tr style="border: 1px solid #000; font-weight: bold;">
+		<td colspan="4">Celkem:</td>
+		<td style="text-align: right;">{$order["total"]|number:2:",":" "}&nbsp;Kč</td>
+	</tr>
+</table>
+
+<img src="/images/razitko3.jpg" style="width: 5cm; float: right; margin: 20px; page-break-after: always;" />
+
+{/foreach}

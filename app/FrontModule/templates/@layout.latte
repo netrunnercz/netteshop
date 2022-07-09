@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>{ifset $title}{$title} &ndash; {/ifset}Koně &amp; hříbata</title>
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/screen.css" />
+	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/js/jquery-1.7.1.min.js"></script>
+	<script src="{$basePath}/js/shop.js"></script>
+	</head>
+	<body>
+		<div id="page">
+			<div id="head">
+				<h1><a n:href="Homepage:"><span>Home</span></a></h1>
+				<div id="cart">
+					<a n:href="Cart:">
+						<span class="cartContent">
+							{if !empty($cartquantity)}
+								V košíku máte:<br />
+								{$cartquantity}&nbsp;ks zboží za {$cartPrice|price}&nbsp;Kč
+							{else}
+								Váš košík je prázdný.
+							{/if}
+						</span>
+					</a>
+				</div>
+				<div id="topmenu">
+					<ul>
+						<li><a n:href="Article: 3">Vše o nákupu</a></li>
+						<li><a n:href="Article: 2">O nás</a></li>
+						<li><a n:href="Article: 1">Kontakt</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div id="main">
+				<div id="breadcrumbs">
+					{control breadcrumbs}
+				</div>
+				<div id="left-menu">
+					<div class="left-menu-box">
+						{form searchForm class => "search"}
+							{input q class => "q", placeholder => "Hledat..."}{input send class => "send"}
+						{/form}
+					</div>
+					
+					<ul class="menublock">
+						<li class="header">Kategorie</li>
+						{control menu}
+					</ul>
+					
+					<div class="left-menu-box" style="margin-top: 15px">
+						<h2>Předplatné</h2>
+						Hledáte předplatné časopisu Koně&nbsp;&amp;&nbsp;hříbata? Můžete si jej objednat přímo na <a href="http://www.koneahribata.cz/predplatne">stránkách časopisu</a>.
+					</div>
+				</div>
+
+				<div id="content">
+					<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+					{block #content}
+					{/block}
+				</div>
+
+				<div class="clear"></div>
+			</div>
+			
+			<div id="footer">
+				Všechny ceny jsou uvedeny včetně DPH v zákonné výši a jsou konečné. Žádná část tohoto webu nesmí být kopírována bez souhlasu provozovatele.
+			</div>
+		</div>
+	</body>
+</html>

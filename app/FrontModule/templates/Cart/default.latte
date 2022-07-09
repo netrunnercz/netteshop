@@ -1,0 +1,54 @@
+{block content}
+<ol class="orderProcess">
+	<li class="current"><span>1. </span>Košík</li>
+	<li><span>2. </span>Dodání a platba</li>
+	<li><span>3. </span>Souhrn</li>
+</ol>
+{if !empty($products)}
+	<table class="cart">
+		<thead>
+			<tr>
+				<td colspan="2">Název</td>
+				<td class="price">Cena za kus</td>
+				<td class="quantity">Počet kusů</td>
+				<td class="pricetotal">Cena celkem</td>
+				<td class="delete"></td>
+			</tr>
+		</thead>
+		{foreach $products as $product}
+			<tr {if $iterator->even}class="even"{else}class="odd"{/if}>
+				<td class="image"><div><img src="/i/small/{$product->id}-{$product->mainImage}.jpg" alt="{$product->name}" title="{$product->name}" /></div></td>
+				<td class="name"><a href="{link "Product:", $product->id}">{$product->name}</a></td>
+				<td class="price">{$product->price_czk|price}&nbsp;Kč</td>
+				<td class="quantity">{form alter-$product->id}
+							{input id}
+							{input quantity, class => quantity, value => $quantities[$product->id]}
+							{input send, class => alterButton, title => "Přepočítat"}
+						{/form}
+				</td>
+				<td class="pricetotal">{$product->price_czk*$quantities[$product->id]|price}&nbsp;Kč</td>
+				<td class="delete">{form delete-$product->id}
+							{input id}
+							{input send, class => deleteButton, title => "Smazat"}
+						{/form}
+				</td>
+			</tr>
+		{/foreach}
+		<tr class="summary">
+			<td colspan="2">Celkem</td>
+			<td></td>
+			<td></td>
+			<td class="pricetotal">{$total|price}&nbsp;Kč</td>
+			<td></td>
+		</tr>
+	</table>
+{else}
+	Košík je prázdný.
+{/if}
+
+<p class="cartButtons">
+	<a href="{link "Order:"}" class="cartNext">Přejít k objednávce &raquo;</a>
+	<a href="javascript:history.back()" class="cartBack">&laquo; Zpět do obchodu</a>
+</p>
+
+{/block}

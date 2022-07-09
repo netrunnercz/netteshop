@@ -1,0 +1,63 @@
+{block content}
+<ol class="orderProcess">
+	<li><span>1. </span>Košík</li>
+	<li class="current"><span>2. </span>Dodání a platba</li>
+	<li><span>3. </span>Souhrn</li>
+</ol>
+
+{form formPayment class => payment}
+<ul class="formErrors" n:if="$form->hasErrors()">
+        <li n:foreach="$form->errors as $error">{$error}</li>
+</ul>
+
+<table class="order">
+	<tr class="head">
+		<td colspan="2">Dodací údaje</td>
+		<td>Způsob dodání a platby</td>
+	</tr>
+	<tr>
+		<td class="label w20">{label firstname /}</td>
+		<td class="w30">{input firstname tabindex => 1}</td>
+			
+		<td class="up" rowspan="8">{input payment tabindex => 9}</td>
+	</tr>
+	<tr>
+		<td class="label">{label lastname /}</td>
+		<td>{input lastname tabindex => 2}</td>
+	</tr>
+	<tr>
+		<td class="label">{label street /}</td>
+		<td>{input street tabindex => 3}</td>
+	</tr>
+	<tr>
+		<td class="label">{label city /}</td>
+		<td>{input city tabindex => 4}</td>
+	</tr>
+	<tr>
+		<td class="label">{label zip /}</td>
+		<td>{input zip tabindex => 5}</td>
+	</tr>
+	<tr>
+		<td class="label">{label country /}</td>
+		<td>{input country tabindex => 5}</td>
+	</tr>
+	<tr>
+		<td class="label">{label email /}</td>
+		<td>{input email tabindex => 7}</td>
+	</tr>
+	<tr>
+		<td class="label">{label phone /}</td>
+		<td>{input phone tabindex => 8}</td>
+	</tr>
+	<tr>
+		<td colspan="4">{input agreement} Souhlasím s <a n:href="Article: 3">obchodními podmínkami</a></td>
+	</tr>
+	<tr>
+		<td colspan="2"><a href="javascript:history.back()" class="cartBack">&laquo; Zpět do košíku</a></td>
+		<td colspan="2" class="cartButtons">{input ok class => "cartNext", value => "Dokončit objednávku »"}</td>
+	</tr>
+</table>
+
+{/form}
+
+{/block}

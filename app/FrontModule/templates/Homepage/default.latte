@@ -1,0 +1,13 @@
+{block content}
+	<a class="current-issue" n:href="Product:default $currentIssue->id"><div id="current-issue">
+		<img src="{if $currentIssue->mainImage}/i/medium/{$currentIssue->id}-{$currentIssue->mainImage}.jpg{else}/i/noimage-medium.jpg{/if}" alt="{$currentIssue->name}" title="{$currentIssue->name}">
+		<h3>Aktuální číslo časopisu Koně &amp hříbata<br>
+		{$currentIssue->name}</h3>
+		{!$currentIssue->description|texy}
+	</div></a>
+
+<h2>Novinky v nabídce</h2>
+
+{include '../productBox.latte'}
+
+{/block}

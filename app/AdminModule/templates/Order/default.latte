@@ -1,0 +1,17 @@
+{block h1}Objednávky{/block}
+
+{block content}
+<h2>Nově zaplacené objednávky</h2>
+{include "orderList.latte", formName => "formPaidUnshippedList", orders => $ordersPaidUnshipped}
+
+<h2>Nové dobírky</h2>
+{include "orderList.latte", formName => "formPayOnDeliveryUnshippedList", orders => $ordersPayOnDeliveryUnshipped}
+
+<h2>Odeslané nezaplacené dobírky</h2>
+{include "orderList.latte", formName => "formPayOnDeliveryShippedList", orders => $ordersPayOnDeliveryShipped}
+
+<h2>Všechny objednávky</h2>
+{control paginator}
+{include "orderList.latte", formName => "formList", orders => $orders}
+{control paginator}
+{/block}

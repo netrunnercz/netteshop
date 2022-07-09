@@ -1,0 +1,8 @@
+{block content}
+
+<a n:href="edit">Nový</a>
+<br>
+<br>
+{foreach $articles as $article}
+	<a n:href="edit $article->id">{$article->name}</a>
+{/foreach}

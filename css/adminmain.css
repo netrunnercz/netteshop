@@ -1,0 +1,316 @@
+html, body {
+	font-family: Tahoma, sans-serif;
+	font-size: 14px;
+	line-height: 130%;
+	padding: 0;
+	margin: 0;
+	min-width: 960px;
+	height: 100%;
+	background-color: #FFF;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	padding: 10px 20px;
+	background-color: #222;
+	color: #FFF;
+	height: 48px;
+	/*border-bottom: 1px solid #AAA;*/
+}
+
+#header span {
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 48px;
+}
+
+#header .logout {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+}
+
+#header .logout a {
+	background: url('/images/stickman-run.png') 0 50% no-repeat;
+	padding-left: 20px;
+	color: #DDD;
+	text-decoration: none;
+}
+
+#header .logout a:hover {
+	color: #FFF;
+}
+
+#menu {
+	padding-left: 15px;
+	height: 32px;
+	background-color: #333;
+	background-image: -moz-linear-gradient(bottom, #333 10%, #666 70%, #999 90%);
+	background-image: linear-gradient(bottom, #333 10%, #666 50%, #999 80%);
+	color: #FFF;
+	/*border-bottom: 1px solid #000;*/
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+#menu ul li {
+	height: 32px;
+	line-height: 32px;
+	margin: 0;
+	float: left;
+}
+
+#menu ul li:hover {
+	background-image: -moz-linear-gradient(bottom, #A60 10%, #F90 70%, #FA0 90%);
+	/*background-color: rgba(255, 192, 0, 0.6);*/
+}
+
+#menu ul li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 0 15px 0 5px;
+	color: #FFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#contentContainer {
+	background-image: -moz-linear-gradient(top, #BBB 0, #FFF 5px);
+	padding: 20px;
+	position: relative;
+}
+
+#contentHeader {
+	background-image: -moz-linear-gradient(top, #EEE 0, #DDD 100%);
+	/*padding: 10px 10px 15px 10px;*/
+	height: 48px;
+	border: 1px solid #AAA;
+	border-bottom: 0;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	position: relative;
+}
+
+#content {
+	border: 1px solid #AAA;
+	padding: 10px;
+	background-color: #FFF;
+}
+
+h1 {
+	font-size: 24px;
+	color: #ff7c00;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #AAA;
+}
+
+h2 {
+	margin: 10px 0;
+	font-size: 20px;
+	line-height: 24px;
+}
+
+a {
+	color: #333;
+}
+
+a:hover {
+	color: #F90;
+}
+
+.toolbar {
+	border-bottom: 1px solid #AAA;
+	height: 28px;
+	padding: 0 0 15px 0;
+	margin: 0 0 15px 0;
+	list-style-type: none;
+}
+
+.toolbar li {
+	float: left;
+	display: inline-block;
+	background-image: -moz-linear-gradient(top, #FFF 0, #CCC 50%);
+	border: 1px solid #AAA;
+	border-radius: 3px;
+	margin: 0 10px 0 0;
+	padding: 0;
+}
+
+.toolbar li:hover {
+	/*background: -moz-linear-gradient(top, #FFF 0, #CCC 1px, #EEE 50%);*/
+	border-color: #666;
+}
+
+.toolbar li a {
+	display: inline-block;
+	height: 28px;
+	padding: 0 4px 0 30px;
+	line-height: 26px;
+	font-weight: bold;
+	text-align: left;
+	text-decoration: none;
+	color: #444;
+}
+
+.toolbar li a:hover {
+	color: #000;
+}
+
+.toolbar li a.new {
+	background: url('/images/plus.png') no-repeat 2px 50%;
+}
+
+img.micro {
+	max-width: 50px;
+	max-height: 50px;
+}
+
+.clear {
+	clear: both;
+}
+
+.floatleft {
+	float: left;
+}
+
+.floatright {
+	float: right;
+}
+
+.center {
+	text-align: center;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.strong {
+	font-weight: bold;
+}
+
+.flash {
+	border-style: solid;
+	border-width: 1px;
+	margin-bottom: 10px;
+	padding: 10px 10px 10px 40px;
+	border-radius: 5px;
+	background-position: 10px 50%;
+	background-repeat: no-repeat;
+}
+
+.flash.info {
+	border-color: #080;
+	background-color: #ddffdd;
+	background-image: url('/images/tick.png');
+}
+
+.box {
+	border: 1px solid #666;
+	margin-bottom: 10px;
+}
+
+.box .boxTitle {
+	padding: 5px 10px 5px 5px;
+	font-weight: bold;
+	background-color: #F6F6F6;
+	background-image: -moz-linear-gradient(top, #FFF 1px, #DDD 1px, #BBB 100%);
+	border-bottom: 0;
+}
+
+.box .boxContent {
+	margin-bottom: 10px;
+	padding: 5px;
+	background-color: #FFF;
+}
+
+.w100 {
+	width: 100%;
+}
+
+.w50 {
+	width: 49.5%;
+}
+
+table.grid {
+	border-collapse: collapse;
+	width: 100%;
+	background-color: #FFF;
+}
+
+table.grid td {
+	padding: 5px 10px;
+}
+
+table.grid thead tr {
+	border-radius: 3px;
+	background-image: -moz-linear-gradient(top, #FFF 1px, #DDD 1px, #BBB 100%);
+	font-weight: bold;
+	border: 1px solid #666;
+}
+
+table.grid tbody tr {
+	border: 1px solid #666;
+}
+
+table.grid tbody tr:nth-child(2n+0) {
+	background-color: #F9F9F9;
+}
+
+table.grid tbody tr:hover {
+	background-color: #fff0e3;
+}
+
+table.grid tfoot tr {
+	border: 0;
+}
+
+table.grid td.highlight {
+	background-color: #fff0e3;
+}
+
+.paginator {
+	text-align: right;
+	margin-bottom: 10px;
+	color: #AAA;
+}
+
+.paginator .paginatorCurrent {
+	display: inline-block;
+	color: #ff7c00;
+	min-width: 1em;
+	padding: 0 0.25em;
+	height: 1.5em;
+	text-align: center;
+	border: 1px solid #F90;
+}
+
+.paginator a {
+	display: inline-block;
+	border: 1px solid #AAA;
+	color: #AAA;
+	min-width: 1em;
+	padding: 0 0.25em;
+	height: 1.5em;
+	text-align: center;
+	text-decoration: none;
+}
+
+.paginator a:hover {
+	border-color: #000;
+	color: #000;
+}

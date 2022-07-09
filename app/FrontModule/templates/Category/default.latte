@@ -1,0 +1,16 @@
+{block content}
+<h2>{$thiscategory->name}</h2>
+
+{if count($products)}
+
+	{control paginator}
+
+	{include '../productBox.latte'}
+
+	{control paginator}
+
+{else}
+	Litujeme, ale kategorie neobsahuje žádné zboží.
+{/if}
+
+{/block}

@@ -1,0 +1,33 @@
+{block h1}Zboží{/block}
+
+{block toolbar}
+<ul class="toolbar">
+	<li><a class="new" n:href="edit">Přidat</a>
+</ul>
+{/block}
+
+{block content}
+{control formCategory}
+
+<table class="grid">
+	<thead>
+		<tr>
+			<td>Id</td>
+			<td>Foto</td>
+			<td>Název</td>
+			<td>Cena</td>
+			<td>Status</td>
+		</tr>
+	</thead>
+	<tbody>
+		{foreach $products as $product}
+		<tr>
+			<td width="1"><a n:href="edit product_id => $product->id">{$product->id}</a></td>
+			<td width="1"><img src="/i/small/{$product->id}-{$product->mainImage}.jpg" class="micro" /></td>
+			<td>{$product->name}</td>
+			<td>{$product->price_czk|price} Kč</td>
+			<td>{if $product->status}<span style="color: #00CC00;">OK</span>{else}<span style="color: #CC0000;">není v prodeji</span>{/if}</td>
+		</tr>
+		{/foreach}
+	</tbody>
+</table>

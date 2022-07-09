@@ -1,0 +1,36 @@
+{block content}
+
+<h2>{$product->name}</h2>
+
+<div class="product-foto"><img src="/i/large/{$product->id}-{$product->mainImage}.jpg" alt="{$product->name}" title="{$product->name}"></div>
+
+<div class="product-box">
+
+	<div class="product-description">
+		{!$product->description|texy}
+	</div>
+
+	{if $product->status}
+
+		<div class="product-price">
+			Cena: {$product->price_czk|price}&nbsp;Kč
+		</div>
+
+		<div class="product-toCart">
+			{control cart, $product->id}
+		</div>
+
+	{else}
+		<div class="product-notAvailable">
+			Toto zboží není bohužel možné zakoupit.
+		</div>
+	{/if}
+	
+</div>
+
+<div class="clear"></div>
+
+<div class="product-descriptionLong">
+	{!$product->description_long|texy}
+</div>
+{/block}
